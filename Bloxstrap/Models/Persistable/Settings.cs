@@ -16,7 +16,7 @@ namespace Bloxstrap.Models.Persistable
         public bool ForceRobloxLanguage { get; set; } = false;
         public bool UseFastFlagManager { get; set; } = true;
         public bool WPFSoftwareRender { get; set; } = false;
-        public bool EnableAnalytics { get; set; } = true;
+        public bool EnableAnalytics { get; set; } = false;
 
         // integration configuration
         public bool EnableActivityTracking { get; set; } = true;
