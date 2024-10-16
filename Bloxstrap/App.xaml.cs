@@ -18,7 +18,7 @@ namespace Bloxstrap
         public const string ProjectName = "Bloxstrap";
 #endif
         public const string ProjectOwner = "Bloxstrap";
-        public const string ProjectRepository = "bloxstraplabs/bloxstrap";
+        public const string ProjectRepository = "Firebladedoge229/bloxstrap";
         public const string ProjectDownloadLink = "https://bloxstraplabs.com";
         public const string ProjectHelpLink = "https://github.com/bloxstraplabs/bloxstrap/wiki";
         public const string ProjectSupportLink = "https://github.com/bloxstraplabs/bloxstrap/issues/new";
@@ -285,6 +285,24 @@ namespace Bloxstrap
                 LaunchHandler.ProcessLaunchArgs();
             }
 
+            // handle roblox singleton mutex for multi-instance launching
+            // note we're handling it here in the main thread and NOT in the
+            // bootstrapper as handling mutexes in async contexts suuuuuucks
+            Mutex? singletonMutex = null;
+            if (Settings.Prop.MultiInstanceLaunching && LaunchSettings.RobloxLaunchMode == LaunchMode.Player)
+            {
+                Logger.WriteLine(LOG_IDENT, "Creating singleton mutex");
+                try
+                {
+                    Mutex.OpenExisting("ROBLOX_singletonMutex");
+                    Logger.WriteLine(LOG_IDENT, "Warning - singleton mutex already exists!");
+                }
+                catch
+                {
+                    // create the singleton mutex before the game client does
+                    singletonMutex = new Mutex(true, "ROBLOX_singletonMutex");
+                }
+            }
             // you must *explicitly* call terminate when everything is done, it won't be called implicitly
         }
     }
