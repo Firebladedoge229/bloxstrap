@@ -135,17 +135,7 @@ namespace Bloxstrap
 
         public static async void SendStat(string key, string value)
         {
-            if (!Settings.Prop.EnableAnalytics)
-                return;
-
-            try
-            {
-                await HttpClient.GetAsync($"https://bloxstraplabs.com/metrics/post?key={key}&value={value}");
-            }
-            catch (Exception ex)
-            {
-                Logger.WriteException("App::SendStat", ex);
-            }
+            return;
         }
 
         protected override void OnStartup(StartupEventArgs e)
