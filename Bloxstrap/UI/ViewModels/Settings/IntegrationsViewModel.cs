@@ -113,6 +113,12 @@ namespace Bloxstrap.UI.ViewModels.Settings
             set => App.Settings.Prop.HideRPCButtons = !value;
         }
 
+        public bool MultiInstanceLaunchingEnabled
+        {
+            get => App.Settings.Prop.MultiInstanceLaunching;
+            set => App.Settings.Prop.MultiInstanceLaunching = value;
+        }
+
         public bool DiscordAccountOnProfile
         {
             get => App.Settings.Prop.ShowAccountOnRichPresence;
