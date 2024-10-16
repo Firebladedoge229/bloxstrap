@@ -2054,24 +2054,6 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It&apos;s anonymous and nothing evil, promise. For insight on what we collect and why, see our [privacy policy]({0})..
-        /// </summary>
-        public static string Menu_Bloxstrap_Analytics_Description {
-            get {
-                return ResourceManager.GetString("Menu.Bloxstrap.Analytics.Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enable sending of analytics.
-        /// </summary>
-        public static string Menu_Bloxstrap_Analytics_Title {
-            get {
-                return ResourceManager.GetString("Menu.Bloxstrap.Analytics.Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Configure options related to Bloxstrap&apos;s behaviour itself..
         /// </summary>
         public static string Menu_Bloxstrap_Description {
