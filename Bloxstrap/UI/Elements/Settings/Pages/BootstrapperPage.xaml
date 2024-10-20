@@ -44,7 +44,7 @@
             </controls:OptionControl.Style>
             <ui:ToggleSwitch IsChecked="{Binding ForceRobloxReinstallation, Mode=TwoWay}" />
         </controls:OptionControl>
- <StackPanel Visibility="{Binding Source={x:Static models:GlobalViewModel.ShowDebugStuff}, Mode=OneTime}">
+ <StackPanel Visibility="{Binding Source={x:Static Mode=OneTime}">
             <TextBlock Text="lol" FontSize="16" FontWeight="Medium" Margin="0,16,0,0" />
             <ui:CardExpander Margin="0,8,0,0" IsExpanded="True">
                 <ui:CardExpander.Header>
