@@ -19,6 +19,8 @@ namespace Bloxstrap.UI.ViewModels.Settings
 
         public ICommand OpenFastFlagEditorCommand => new RelayCommand(OpenFastFlagEditor);
 
+        public Visibility ShowDebugFlags => Visibility.Visible;
+
         public bool UseFastFlagManager
         {
             get => App.Settings.Prop.UseFastFlagManager;
@@ -29,6 +31,26 @@ namespace Bloxstrap.UI.ViewModels.Settings
         {
             get => int.TryParse(App.FastFlags.GetPreset("Rendering.Framerate"), out int x) ? x : 0;
             set => App.FastFlags.SetPreset("Rendering.Framerate", value == 0 ? null : value);
+        }
+
+        public bool HttpRequestLogging
+        {
+            get => App.FastFlags.GetPreset("HTTP.Log") is not null;
+            set => App.FastFlags.SetPreset("HTTP.Log", value ? 12 : null);
+        }
+        public string HttpRequestProxy
+        {
+            get => App.FastFlags.GetPreset("HTTP.Proxy.Address.1") ?? "";
+            set
+            {
+                App.FastFlags.SetPreset("HTTP.Proxy.Enable", String.IsNullOrEmpty(value) ? null : true);
+                App.FastFlags.SetPreset("HTTP.Proxy.Address", String.IsNullOrEmpty(value) ? null : value);
+            }
+        }
+        public string StateOverlayFlags
+        {
+            get => App.FastFlags.GetPreset("UI.FlagState") ?? "";
+            set => App.FastFlags.SetPreset("UI.FlagState", String.IsNullOrEmpty(value) ? null : value);
         }
 
         public IReadOnlyDictionary<MSAAMode, string?> MSAALevels => FastFlagManager.MSAAModes;
